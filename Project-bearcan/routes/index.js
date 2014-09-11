@@ -33,7 +33,7 @@ router.post('/adduser', function(req, res) {
     var userName = req.body.username;
     var userEmail = req.body.useremail;
 
-    // Set our collection
+    // Set our collection 
     var collection = db.get('usercollection');
 
     // Submit to the DB

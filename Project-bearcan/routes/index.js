@@ -9,37 +9,38 @@ router.get('/', function(req, res) {
 router.get('/helloworld', function(req, res) {
     res.render('helloworld', { title: 'Hello, World!' });
 });
-/* GET Userlist page. */
-router.get('/userlist', function(req, res) {
+/* GET projectlist page. */
+router.get('/projectlist', function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){
-        res.render('userlist', {
-            "userlist" : docs
+        res.render('projectlist', {
+            "projectlist" : docs
         });
     });
 });
 /* GET New User page. */
-router.get('/newuser', function(req, res) {
-    res.render('newuser', { title: 'Add New User' });
+router.get('/newproject', function(req, res) {
+    res.render('newproject', { title: 'Add New Project' });
 });
 /* POST to Add User Service */
-router.post('/adduser', function(req, res) {
+router.post('/newproject', function(req, res) {
 
     // Set our internal DB variable
     var db = req.db;
 
     // Get our form values. These rely on the "name" attributes
-    var userName = req.body.username;
-    var userEmail = req.body.useremail;
+    var projectname = req.body.projectname;
+    
+    
 
     // Set our collection 
     var collection = db.get('usercollection');
 
     // Submit to the DB
     collection.insert({
-        "username" : userName,
-        "email" : userEmail
+        "projectname" : projectname,
+        
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -47,9 +48,9 @@ router.post('/adduser', function(req, res) {
         }
         else {
             // If it worked, set the header so the address bar doesn't still say /adduser
-            res.location("userlist");
+            res.location("projectlist");
             // And forward to success page
-            res.redirect("userlist");
+            res.redirect("projectlist");
         }
     });
 });

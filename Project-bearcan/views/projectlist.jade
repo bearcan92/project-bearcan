@@ -4,6 +4,6 @@ block content
     h1.
         Project List
     ul
-        each user, i in projectlist
+        each project, i in projectlist
             li
-                user.username
+                a() = project.projectname

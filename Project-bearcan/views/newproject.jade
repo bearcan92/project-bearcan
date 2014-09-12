@@ -3,6 +3,5 @@ extends layout
 block content
     h1= title
     form#formNewProject(name="newproject",method="post",action="/newproject")
-        input#inputProjectName(type="text", placeholder="projectname", name="projectname")
-        
+        input#inputprojectname(type="text", placeholder="projectname", name="projectname")
         button#btnSubmit(type="submit") submit

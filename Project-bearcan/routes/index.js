@@ -47,7 +47,7 @@ router.post('/newproject', function(req, res) {
             res.send("There was a problem adding the information to the database.");
         }
         else {
-            // If it worked, set the header so the address bar doesn't still say /adduser
+            // If it worked, set the header so the address bar doesn't still say /newproject
             res.location("projectlist");
             // And forward to success page
             res.redirect("projectlist");
